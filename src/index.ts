@@ -2,18 +2,15 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import { query } from './db/db';
 
-
 const router = express.Router();
-import { router as attractionRouter } from './routes/attraction.ts';
-import { router as promotionRouter } from './routes/promotion.ts';
 
 const app = express();
 
 app.use(bodyParser.json());
 
 
-app.use('/api/atracciones', attractionRouter);
-app.use('/api/promociones', promotionRouter);
+//app.use('/api/atracciones', attractionRouter);
+//app.use('/api/promociones', promotionRouter);
 
 
 app.get('/users', async(req, res) => {
