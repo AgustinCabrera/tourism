@@ -1,4 +1,7 @@
-interface promotion {
+import express, {Response,Request} from 'express';
+const router = express.Router();
+
+interface Promotion {
     id: number,
     promotion_type: string,
     pricing_strategy: string,

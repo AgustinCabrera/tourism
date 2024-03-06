@@ -1,12 +1,13 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import { query } from './db/db';
+
+
+const router = express.Router();
 import { router as attractionRouter } from './routes/attraction.ts';
 import { router as promotionRouter } from './routes/promotion.ts';
-import 
-// Importa otros routers según sea necesario
 
 const app = express();
-
 
 app.use(bodyParser.json());
 
@@ -15,8 +16,13 @@ app.use('/api/atracciones', attractionRouter);
 app.use('/api/promociones', promotionRouter);
 
 
-app.get('/', async(req, res) => {
-    res.send('¡Bienvenido al Sistema de Turismo de la Tierra Media!');
+app.get('/users', async(req, res) => {
+    try {
+        const users = await query('SELECT * FROM users',[]);
+        res.json(users);
+    } catch (err) {
+        res.status(500).json({ error: 'Internal server error' });
+    }
 });
 
 
