@@ -1,3 +1,5 @@
+    CREATE DATABASE tourism;
+    
     CREATE TABLE "Atraccion" (
     "id" int PRIMARY KEY,
     "tickets" INT,

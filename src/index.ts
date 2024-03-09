@@ -11,8 +11,6 @@ app.use(bodyParser.json());
 
 //app.use('/api/atracciones', attractionRouter);
 //app.use('/api/promociones', promotionRouter);
-
-
 app.get('/users', async(req, res) => {
     try {
         const users = await query('SELECT * FROM users',[]);
@@ -26,5 +24,5 @@ app.get('/users', async(req, res) => {
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-    console.log("Servidor en ejecución en el puerto ${PORT}");
+    console.log("Servidor en ejecución en el puerto: ", PORT)
 });
