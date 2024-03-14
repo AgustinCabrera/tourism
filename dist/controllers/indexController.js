@@ -9,24 +9,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.query = exports.pool = void 0;
-const pg_1 = require("pg");
-const pool = new pg_1.Pool({
-    user: process.env.DBUSER,
-    host: process.env.HOST,
-    database: process.env.DB,
-    password: process.env.DBPASS,
-    port: 8081,
+exports.getUsers = void 0;
+const db_1 = require("../db/db");
+const getUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const response = yield db_1.pool.query('SELECT * FROM Usuario');
+    res.status(200).json(response.rows);
 });
-exports.pool = pool;
-const query = (text, params) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const res = yield pool.query(text, params);
-        return res.rows;
-    }
-    catch (err) {
-        console.log("Error executing query", err);
-        throw err;
-    }
-});
-exports.query = query;
+exports.getUsers = getUsers;
