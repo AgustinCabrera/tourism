@@ -2,7 +2,10 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import { query } from './db/db';
 import indexRoutes from './routes/index';
+
+require('dotenv').config();
 const app = express();
+
 
 //middlewares
 app.use(express.json());

@@ -9,19 +9,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.query = exports.pool = void 0;
+exports.query = exports.client = void 0;
 const pg_1 = require("pg");
-const pool = new pg_1.Pool({
+const client = new pg_1.Client({
     user: process.env.DBUSER,
     host: process.env.HOST,
     database: process.env.DB,
-    password: process.env.DBPASS,
+    password: "root",
     port: 8081,
 });
-exports.pool = pool;
+exports.client = client;
 const query = (text, params) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const res = yield pool.query(text, params);
+        yield client.connect();
+        const res = yield client.query(text, params);
         return res.rows;
     }
     catch (err) {

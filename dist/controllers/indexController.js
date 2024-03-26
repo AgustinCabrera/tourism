@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getUsers = void 0;
 const db_1 = require("../db/db");
 const getUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const response = yield db_1.pool.query('SELECT * FROM Usuario');
+    const response = yield db_1.client.query('SELECT * FROM Usuario');
     res.status(200).json(response.rows);
 });
 exports.getUsers = getUsers;

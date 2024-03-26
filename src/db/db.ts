@@ -1,6 +1,6 @@
-import {Pool} from 'pg';
+import {Client} from 'pg';
 
-const pool = new Pool({
+const client = new Client({
     user: process.env.DBUSER,
     host: process.env.HOST,
     database: process.env.DB,
@@ -9,8 +9,10 @@ const pool = new Pool({
 });
 
 const query = async (text: string, params: any[]) => {
+    
     try{
-        const res = await pool.query(text, params);
+        await client.connect()
+        const res = await client.query(text, params);
         return res.rows;
     }
     catch(err){
@@ -19,4 +21,4 @@ const query = async (text: string, params: any[]) => {
     }
 }
 
-export {pool,query};
+export {client,query};
