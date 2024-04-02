@@ -9,25 +9,31 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.query = exports.client = void 0;
+exports.query = exports.pool = void 0;
 const pg_1 = require("pg");
-const client = new pg_1.Client({
+const pool = new pg_1.Pool({
     user: process.env.DBUSER,
     host: process.env.HOST,
     database: process.env.DB,
     password: "root",
     port: 8081,
 });
-exports.client = client;
+exports.pool = pool;
 const query = (text, params) => __awaiter(void 0, void 0, void 0, function* () {
+    let client;
     try {
-        yield client.connect();
-        const res = yield client.query(text, params);
+        yield pool.connect();
+        const res = yield pool.query(text, params);
         return res.rows;
     }
     catch (err) {
         console.log("Error executing query", err);
         throw err;
+    }
+    finally {
+        if (client) {
+            client.release();
+        }
     }
 });
 exports.query = query;

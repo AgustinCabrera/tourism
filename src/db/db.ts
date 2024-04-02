@@ -1,24 +1,28 @@
-import {Client} from 'pg';
+import {Pool,PoolClient} from 'pg';
 
-const client = new Client({
+const pool = new Pool({
     user: process.env.DBUSER,
     host: process.env.HOST,
     database: process.env.DB,
-    password: process.env.DBPASS,
+    password: "root",
     port: 8081,
 });
 
 const query = async (text: string, params: any[]) => {
-    
+    let client: PoolClient | undefined;
     try{
-        await client.connect()
-        const res = await client.query(text, params);
+        await pool.connect()
+        const res = await pool.query(text, params);
         return res.rows;
     }
     catch(err){
         console.log("Error executing query",err);
         throw err;
+    }finally{
+        if(client){
+            client.release();
+        }
     }
 }
 
-export {client,query};
+export {pool,query};
