@@ -5,7 +5,7 @@ import {pool} from '../db/db'
 
 export const getUsers = async (req:Request,res:Response) => {
     try{
-    const response:QueryResult = await pool.query('SELECT * FROM Usuario');
+    const response:QueryResult = await pool.query('SELECT * FROM "Usuario"');
     return res.status(200).json(response.rows);
     }catch(error){
         console.log(error)
@@ -62,11 +62,9 @@ try {
     return res.status(500)
 }
 
-
 }
 
 export const getAlgo = async (req:Request,res:Response) => {
     await new Promise((resolve) => setTimeout(resolve, 3000));
-    res.status(200).json({key:'value'});
-
+    res.status(200).json({key:'ga ti to'});
 }

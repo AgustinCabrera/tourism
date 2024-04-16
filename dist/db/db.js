@@ -20,10 +20,9 @@ const pool = new pg_1.Pool({
 });
 exports.pool = pool;
 const query = (text, params) => __awaiter(void 0, void 0, void 0, function* () {
-    let client;
+    const client = yield pool.connect();
     try {
-        yield pool.connect();
-        const res = yield pool.query(text, params);
+        const res = yield client.query(text, params);
         return res.rows;
     }
     catch (err) {
@@ -31,9 +30,7 @@ const query = (text, params) => __awaiter(void 0, void 0, void 0, function* () {
         throw err;
     }
     finally {
-        if (client) {
-            client.release();
-        }
+        client.release();
     }
 });
 exports.query = query;

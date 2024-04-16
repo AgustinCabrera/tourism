@@ -9,19 +9,15 @@ const pool = new Pool({
 });
 
 const query = async (text: string, params: any[]) => {
-    let client: PoolClient | undefined;
-    try{
-        await pool.connect()
-        const res = await pool.query(text, params);
+    const client = await pool.connect();
+    try {
+        const res = await client.query(text, params);
         return res.rows;
-    }
-    catch(err){
-        console.log("Error executing query",err);
+    } catch (err) {
+        console.log("Error executing query", err);
         throw err;
-    }finally{
-        if(client){
-            client.release();
-        }
+    } finally {
+        client.release();
     }
 }
 
