@@ -5,7 +5,7 @@ import {pool} from '../db/db'
 
 export const getUsers = async (req:Request,res:Response) => {
     try{
-    const response:QueryResult = await pool.query('SELECT * FROM "Usuario"');
+    const response:QueryResult = await pool.query('SELECT * FROM myschema.users');
     return res.status(200).json(response.rows);
     }catch(error){
         console.log(error)
@@ -16,7 +16,7 @@ export const getUsers = async (req:Request,res:Response) => {
 export const getUserById = async (req:Request,res:Response) => {
     try {
         const id = parseInt(req.params.id)
-        const response = await pool.query('SELECT * FROM Usuario WHERE id = $1',[id]);
+        const response = await pool.query('SELECT * FROM users WHERE id = $1',[id]);
         return res.status(200).json(response.rows);
     } catch (error) {
         console.log(error)

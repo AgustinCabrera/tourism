@@ -5,7 +5,7 @@ const pool = new Pool({
     host: process.env.HOST,
     database: process.env.DB,
     password: "root",
-    port: 8081,
+    port: 5432,
 });
 
 const query = async (text: string, params: any[]) => {

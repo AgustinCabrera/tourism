@@ -16,7 +16,7 @@ const pool = new pg_1.Pool({
     host: process.env.HOST,
     database: process.env.DB,
     password: "root",
-    port: 8081,
+    port: 5432,
 });
 exports.pool = pool;
 const query = (text, params) => __awaiter(void 0, void 0, void 0, function* () {

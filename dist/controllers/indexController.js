@@ -13,7 +13,7 @@ exports.getAlgo = exports.deleteUser = exports.updateUser = exports.createUser =
 const db_1 = require("../db/db");
 const getUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const response = yield db_1.pool.query('SELECT * FROM "Usuario"');
+        const response = yield db_1.pool.query('SELECT * FROM myschema.users');
         return res.status(200).json(response.rows);
     }
     catch (error) {
@@ -25,7 +25,7 @@ exports.getUsers = getUsers;
 const getUserById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const id = parseInt(req.params.id);
-        const response = yield db_1.pool.query('SELECT * FROM Usuario WHERE id = $1', [id]);
+        const response = yield db_1.pool.query('SELECT * FROM users WHERE id = $1', [id]);
         return res.status(200).json(response.rows);
     }
     catch (error) {
