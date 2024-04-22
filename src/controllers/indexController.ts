@@ -5,7 +5,7 @@ import {pool} from '../db/db'
 
 export const getUsers = async (req:Request,res:Response) => {
     try{
-    const response:QueryResult = await pool.query('SELECT * FROM myschema.users');
+    const response:QueryResult = await pool.query('SELECT * FROM users ORDER BY id ASC');
     return res.status(200).json(response.rows);
     }catch(error){
         console.log(error)

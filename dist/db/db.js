@@ -15,7 +15,7 @@ const pool = new pg_1.Pool({
     user: process.env.DBUSER,
     host: process.env.HOST,
     database: process.env.DB,
-    password: "root",
+    password: process.env.DBPASS,
     port: 5432,
 });
 exports.pool = pool;

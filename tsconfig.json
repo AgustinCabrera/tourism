@@ -8,6 +8,6 @@
     "esModuleInterop": true,
     "moduleResolution": "node",
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "src/db/queries.js"],
   "exclude": ["node_modules"]
 }

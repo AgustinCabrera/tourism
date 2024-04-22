@@ -13,7 +13,7 @@ exports.getAlgo = exports.deleteUser = exports.updateUser = exports.createUser =
 const db_1 = require("../db/db");
 const getUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const response = yield db_1.pool.query('SELECT * FROM myschema.users');
+        const response = yield db_1.pool.query('SELECT * FROM users ORDER BY id ASC');
         return res.status(200).json(response.rows);
     }
     catch (error) {
