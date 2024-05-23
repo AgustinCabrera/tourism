@@ -2,11 +2,13 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteUser = exports.updateUser = exports.createUser = exports.getUserById = exports.getUsers = void 0;
 const pg_1 = require("pg");
+const dotenv_1 = require("dotenv");
+(0, dotenv_1.config)();
 const pool = new pg_1.Pool({
-    user: 'agustin', //process.env.DBUSER
-    host: 'localhost', //process.env.HOST
-    database: 'tourismapp', //process.env.DB,
-    password: 'root', //process.env.DBPASS
+    user: 'agustin',
+    host: 'localhost',
+    database: 'tourismapp',
+    password: "root",
     port: 5432,
 });
 const getUsers = (request, response) => {

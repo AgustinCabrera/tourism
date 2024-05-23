@@ -47,7 +47,7 @@
 
     ALTER TABLE "Atraccion" ADD FOREIGN KEY ("attraction_type_id", "id") REFERENCES "Atraccion_Promocion" ("atraccion_id", "promocion_id");
 
-    ALTER TABLE "Promocion" ADD FOREIGN KEY ("id") REFERENCES "Atraccion_Promocion" ("promocion_id");
+    ALTER TABLE "Promocion" ADD FOREIGN KEY ("id") REFERENCES "Atraccion_Promocion" ("promocion_id"); // esta no esta
 
     ALTER TABLE "Usuario" ADD FOREIGN KEY ("id") REFERENCES "Itinerario" ("id");
 

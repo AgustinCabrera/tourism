@@ -11,7 +11,7 @@ const app = (0, express_1.default)();
 //middlewares
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
-app.use(index_1.default);
+app.use('/', index_1.default);
 const PORT = process.env.PORT || 3000;
 app.get('/users', queries_1.getUsers);
 app.listen(PORT, () => {

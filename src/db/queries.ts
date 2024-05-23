@@ -1,11 +1,13 @@
 import { Pool, QueryResult } from 'pg';
 import { Request, Response } from 'express';
+import { config } from 'dotenv';
+config();
 
 const pool = new Pool({
-  user: 'agustin', //process.env.DBUSER
-  host: 'localhost',//process.env.HOST
-  database:'tourismapp', //process.env.DB,
-  password: 'root', //process.env.DBPASS
+  user: 'agustin', 
+  host: 'localhost',
+  database:'tourismapp', 
+  password: "root", 
   port: 5432,
 });
 
