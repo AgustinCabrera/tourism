@@ -21,6 +21,7 @@
   "name": "tourism-app",
   "version": "1.0.0",
   "main": "index.ts",
+  "type":"module",
   "scripts": {
     "dev": " concurrently \"tsc --watch\" \"nodemon dist/index.js\"",
     "build": "tsc"

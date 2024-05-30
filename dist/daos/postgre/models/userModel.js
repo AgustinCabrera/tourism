@@ -8,14 +8,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.findUserByUsername = exports.createUser = void 0;
-const db_1 = __importDefault(require("./db"));
+const db_1 = require("../../../db/db");
 const createUser = (user) => __awaiter(void 0, void 0, void 0, function* () {
-    const client = yield db_1.default.connect();
+    const client = yield db_1.pool.connect();
     try {
         const { username, password } = user;
         yield client.query('INSERT INTO users (username, password) VALUES ($1, $2)', [username, password]);
@@ -26,7 +23,7 @@ const createUser = (user) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.createUser = createUser;
 const findUserByUsername = (username) => __awaiter(void 0, void 0, void 0, function* () {
-    const client = yield db_1.default.connect();
+    const client = yield db_1.pool.connect();
     try {
         const result = yield client.query('SELECT * FROM users WHERE username = $1', [username]);
         if (result.rows.length > 0) {

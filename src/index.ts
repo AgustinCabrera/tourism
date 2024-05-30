@@ -3,12 +3,13 @@ import bodyParser from 'body-parser';
 import { query } from './db/db';
 import indexRoutes from './routes/index';
 import {getUsers} from './db/queries'
-const Sequelize = require('sequelize');
+import dotenv from 'dotenv';
 
-require('dotenv').config();
+dotenv.config();
 const app = express();
+const DBPATH = process.env.DBPATH;
+console.log(DBPATH);
 
-const sequelize = new Sequelize('sqlite:tourismapp');
 
 //middlewares
 app.use(express.json());
@@ -19,6 +20,11 @@ const PORT = process.env.PORT || 3000;
 
 app.get('/users', getUsers);
 
-app.listen(PORT, () => {
-    console.log("Servidor en ejecución en el puerto: ", PORT)
-});
+try {
+    app.listen(PORT, () => {
+        console.log("Server running on port:", PORT);
+        });
+    } catch (error) {
+        console.error('Unable to connect to the database:', error);
+    }
+

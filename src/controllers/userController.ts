@@ -3,7 +3,7 @@
     import jwt from 'jsonwebtoken';
     import { createUser, findUserByUsername, IUser } from '../daos/postgre/models/userModel';
 
-    const secret = 'mysecretkey'; // Debe estar en un archivo de configuración
+    const secret = process.env.SECRET; 
 
     export const register = async (req: Request, res: Response) => {
     const { username, password } = req.body;
