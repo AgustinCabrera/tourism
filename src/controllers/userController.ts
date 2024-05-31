@@ -1,7 +1,7 @@
     import { Request, Response } from 'express';
     import bcrypt from 'bcryptjs';
     import jwt from 'jsonwebtoken';
-    import { createUser, findUserByUsername, IUser } from '../daos/postgre/models/userModel';
+    import { createUser, findUserByUsername, IUser } from '../daos/mongo/models/userModel';
 
     const secret = process.env.SECRET; 
 

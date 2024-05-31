@@ -1,0 +1,4 @@
+- pantalla de login
+- pantalla de trip, tiene un buscador de destinos 
+- pantalla de saveds
+- pantalla de profile
