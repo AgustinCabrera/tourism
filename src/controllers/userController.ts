@@ -1,6 +1,6 @@
     import { Request, Response } from 'express';
-    import bcrypt from 'bcryptjs';
-    import jwt from 'jsonwebtoken';
+    import * as bcrypt from 'bcryptjs';
+    import * as jwt from 'jsonwebtoken';
     import { createUser, findUserByUsername, IUser } from '../daos/mongo/models/userModel';
 
     const secret = process.env.SECRET; 
