@@ -15,8 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.login = exports.register = void 0;
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const userModel_1 = require("../daos/postgre/models/userModel");
-const secret = 'mysecretkey'; // Debe estar en un archivo de configuración
+const userModel_1 = require("../daos/mongo/models/userModel");
+const secret = process.env.SECRET;
 const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { username, password } = req.body;
     const hashedPassword = yield bcryptjs_1.default.hash(password, 10);
