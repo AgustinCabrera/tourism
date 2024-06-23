@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import indexRoutes from './routes/index';
+//import indexRoutes from './routes/index';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -12,7 +12,7 @@ console.log(DBPATH);
 //middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/',indexRoutes);
+//app.use('/',indexRoutes);
 
 const PORT = process.env.PORT || 3000;
 
