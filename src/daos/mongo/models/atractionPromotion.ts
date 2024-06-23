@@ -1,4 +1,4 @@
-const atractionPromotion = new Schema({
+const AtractionPromotionSchema = () => new mongoose.Schema({
     atractionId:{
         type: Number,
         required: true
@@ -6,7 +6,5 @@ const atractionPromotion = new Schema({
     promotionId:{
         type: Number,
         required: true
-    }
-
-});
-module.exports = mongoose.model('atraction Promotion', atractionPromotion);
+    }});
+export const AtractionPromotionModel = mongoose.model('atraction Promotion', AtractionPromotionSchema);

@@ -1,5 +1,7 @@
 "use strict";
-const atractionPromotion = new Schema({
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.AtractionPromotionModel = void 0;
+const AtractionPromotionSchema = () => new mongoose.Schema({
     atractionId: {
         type: Number,
         required: true
@@ -9,4 +11,4 @@ const atractionPromotion = new Schema({
         required: true
     }
 });
-module.exports = mongoose.model('atraction Promotion', atractionPromotion);
+exports.AtractionPromotionModel = mongoose.model('atraction Promotion', AtractionPromotionSchema);

@@ -1,4 +1,4 @@
-const itinerary = new Schema({
+const ItinerarySchema = () => new mongoose.Schema({
     id:{
         type: Number,
         required: true
@@ -12,4 +12,4 @@ const itinerary = new Schema({
         required: true,
     }
 })
-module.exports = mongoose.model('itinerary',itinerary);
+export const ItineraryModel = mongoose.model('itinerary',ItinerarySchema);

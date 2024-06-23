@@ -1,8 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import { query } from './db/db';
 import indexRoutes from './routes/index';
-import {getUsers} from './db/queries'
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -18,12 +16,14 @@ app.use('/',indexRoutes);
 
 const PORT = process.env.PORT || 3000;
 
-app.get('/users', getUsers);
 
 try {
     app.listen(PORT, () => {
         console.log("Server running on port:", PORT);
         });
+        mongoose.connect('mongodb://localhost:27017', { useNewUrlParser: true, useUnifiedTopology: true })
+            .then(() => console.log('MongoDB connected'))
+            .catch((err:Error) => console.log(err));
     } catch (error) {
         console.error('Unable to connect to the database:', error);
     }

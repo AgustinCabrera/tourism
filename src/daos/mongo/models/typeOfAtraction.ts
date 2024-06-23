@@ -1,4 +1,4 @@
-const typeOfAtraction = new Schema({
+const typeOfAtractionSchema = new mongoose.Schema({
     id:{
         type: Number,
         required: true,
@@ -8,4 +8,4 @@ const typeOfAtraction = new Schema({
         required: true,
     }
 });
-module.exports = mongoose.model('Type of atractions', typeOfAtraction);
+export const typeOfAtractionModel = mongoose.model('Type of atractions', typeOfAtractionSchema);

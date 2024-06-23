@@ -1,6 +1,7 @@
 "use strict";
-const Schema = mongoose.Schema;
-const userSchema = new Schema({
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.userModel = void 0;
+const userSchema = new mongoose.Schema({
     id: {
         type: Number,
         required: true,
@@ -27,4 +28,4 @@ const userSchema = new Schema({
         required: true
     }
 });
-module.exports = mongoose.model('user', userSchema);
+exports.userModel = mongoose.model('user', userSchema);

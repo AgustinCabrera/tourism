@@ -1,4 +1,4 @@
-const atractionSchema = new Schema({
+const AtractionSchema = new mongoose.Schema({
 id:{
     type: Number,
     required: true,
@@ -30,4 +30,4 @@ is_deleted: {
 }
 });
 
-module.exports = mongoose.model('atraction', atractionSchema);
+export const AtractionModel = mongoose.model('atraction', AtractionSchema);

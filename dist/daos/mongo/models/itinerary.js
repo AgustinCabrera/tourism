@@ -1,5 +1,7 @@
 "use strict";
-const itinerary = new Schema({
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ItineraryModel = void 0;
+const ItinerarySchema = () => new mongoose.Schema({
     id: {
         type: Number,
         required: true
@@ -13,4 +15,4 @@ const itinerary = new Schema({
         required: true,
     }
 });
-module.exports = mongoose.model('itinerary', itinerary);
+exports.ItineraryModel = mongoose.model('itinerary', ItinerarySchema);

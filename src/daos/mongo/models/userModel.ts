@@ -1,6 +1,4 @@
-    const Schema = mongoose.Schema;
-
-    const userSchema = new Schema({
+const userSchema = new mongoose.Schema({
     id:{
         type: Number,
         required: true,
@@ -27,5 +25,4 @@
         required:true
     }
     });
-
-    module.exports = mongoose.model('user', userSchema);
+export const userModel = mongoose.model('user', userSchema);
