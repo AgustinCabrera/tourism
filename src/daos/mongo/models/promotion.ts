@@ -1,4 +1,12 @@
-const PromotionSchema = new mongoose.Schema({
+import mongoose, {Document, Schema} from "mongoose";
+export interface IPromotion extends Document {
+    id: number;
+    promotionType:string;
+    pricingStrategy: string;
+    costOrDiscount: Float32Array;
+    isDeleted: boolean;
+}
+const PromotionSchema = new Schema<IPromotion>({
     id:{ 
         type: Number,
         required: true
@@ -20,4 +28,5 @@ const PromotionSchema = new mongoose.Schema({
         required: true
     }
 });
-export const PromotionModel = mongoose.model('promotion',PromotionSchema);
+const Promotion = mongoose.model<IPromotion>('promotion',PromotionSchema);
+export default Promotion;

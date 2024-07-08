@@ -1,4 +1,9 @@
-const AtractionPromotionSchema = () => new mongoose.Schema({
+import mongoose, {Document,Schema} from 'mongoose'
+export interface IatractionPromotion extends Document{
+    atractionId: number;
+    promotionId:number;
+}
+const AtractionPromotionSchema = new Schema<IatractionPromotion>({
     atractionId:{
         type: Number,
         required: true
@@ -7,4 +12,5 @@ const AtractionPromotionSchema = () => new mongoose.Schema({
         type: Number,
         required: true
     }});
-export const AtractionPromotionModel = mongoose.model('atraction Promotion', AtractionPromotionSchema);
+const AtractionPromotion = mongoose.model<IatractionPromotion>('atraction Promotion', AtractionPromotionSchema);
+export default AtractionPromotion;

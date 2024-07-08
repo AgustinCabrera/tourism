@@ -1,4 +1,12 @@
-const ItinerarySchema = () => new mongoose.Schema({
+import mongoose, {Document, Schema} from 'mongoose'
+
+export interface IItinerary extends Document {
+    id: number;
+    userId: number;
+    atractionId: number;
+}
+
+const ItinerarySchema =  new Schema<IItinerary>({
     id:{
         type: Number,
         required: true
@@ -12,4 +20,5 @@ const ItinerarySchema = () => new mongoose.Schema({
         required: true,
     }
 })
-export const ItineraryModel = mongoose.model('itinerary',ItinerarySchema);
+const Itinerary = mongoose.model<IItinerary>('itinerary',ItinerarySchema);
+export default Itinerary;

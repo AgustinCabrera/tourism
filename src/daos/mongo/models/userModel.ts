@@ -1,28 +1,22 @@
-const userSchema = new mongoose.Schema({
-    id:{
-        type: Number,
-        required: true,
-    },
-    username: {
-        type: String,
-        required: true
-    },
-    gold: {
-        type: Float32Array,
-        required: true,
-        unique: true
-    },
-    password: {
-        type: String,
-        required: true
-    },
-    preferred_attraction_type_id: {
-        type: Number,
-        required: true
-    },
-    is_admin: {
-        type: Boolean,
-        required:true
+    import mongoose, { Document, Schema } from 'mongoose';
+
+    export interface IUser extends Document {
+    username: string;
+    password: string;
+    gold: number;
+    available_time: number;
+    preferred_attraction_type_id: string;
+    is_admin: boolean;
     }
+
+    const userSchema = new Schema<IUser>({
+    username: { type: String, required: true },
+    password: { type: String, required: true },
+    gold: { type: Number, required: true },
+    available_time: { type: Number, required: true },
+    preferred_attraction_type_id: { type: String, required: true },
+    is_admin: { type: Boolean, required: true },
     });
-export const userModel = mongoose.model('user', userSchema);
+
+    const User = mongoose.model<IUser>('User', userSchema);
+    export default User;

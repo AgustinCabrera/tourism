@@ -1,4 +1,15 @@
-const AtractionSchema = new mongoose.Schema({
+import mongoose, {Schema, Document} from "mongoose";
+
+export interface Iatraction extends Document {
+    id: number;
+    tickets: number;
+    cost: Float32Array;
+    name: string;
+    time: number;
+    atractionTypeId: number;
+    is_deleted: boolean;
+}
+const AtractionSchema = new Schema<Iatraction>({
 id:{
     type: Number,
     required: true,
@@ -30,4 +41,5 @@ is_deleted: {
 }
 });
 
-export const AtractionModel = mongoose.model('atraction', AtractionSchema);
+const Atraction = mongoose.model<Iatraction>('atraction', AtractionSchema);
+export default Atraction;

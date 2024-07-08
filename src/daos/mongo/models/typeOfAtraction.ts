@@ -1,4 +1,10 @@
-const typeOfAtractionSchema = new mongoose.Schema({
+import mongoose, {Document, Schema} from "mongoose";
+
+export interface ItypeOfAtraction extends Document {
+    id: number;
+    name: string;
+}
+const typeOfAtractionSchema = new Schema<ItypeOfAtraction>({
     id:{
         type: Number,
         required: true,
@@ -8,4 +14,5 @@ const typeOfAtractionSchema = new mongoose.Schema({
         required: true,
     }
 });
-export const typeOfAtractionModel = mongoose.model('Type of atractions', typeOfAtractionSchema);
+const TypeOfAtraction = mongoose.model<ItypeOfAtraction>('Type of atractions', typeOfAtractionSchema);
+export default TypeOfAtraction;

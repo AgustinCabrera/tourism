@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@types/mongoose": "^5.11.97",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
@@ -8,7 +9,7 @@
     "eslint": "^8.57.0",
     "express": "^4.18.3",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.4.1",
+    "mongoose": "^8.4.5",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
     "pg": "^8.11.3",
@@ -21,7 +22,6 @@
   "name": "tourism-app",
   "version": "1.0.0",
   "main": "index.ts",
-  "type": "module",
   "scripts": {
     "dev": " concurrently \"tsc --watch\" \"nodemon dist/index.js\"",
     "build": "tsc"
