@@ -25,7 +25,7 @@ export const createAtraction = async (req: Request, res: Response): Promise<Resp
         const {id, tickets, cost, name, time, attraction_type_id, is_deleted} = req.body;
         const newAtraction = new Atraction({id, tickets, cost, name, time, attraction_type_id , is_deleted});
         await newAtraction.save();
-            return res.status(201).send(`User added with ID: ${newAtraction._id}`)
+            return res.status(201).send(`Atraction added with ID: ${newAtraction._id}`)
     } catch (error) {
         console.error(error)
         return res.status(500).send(error)
@@ -36,9 +36,19 @@ export const updateAtraction = async (req: Request, res:Response): Promise<Respo
     try {
         const {id, tickets, cost, name, time, attraction_type_id, is_deleted} = req.body;
         const updatedAtraction = await Atraction.findByIdAndUpdate(req.params.id, {id, tickets, cost, name, time, attraction_type_id , is_deleted});
-            return res.status(200).send(`User modified with ID: ${req.params.id}`)
+            return res.status(200).send(`Atraction modified with ID: ${req.params.id}`)
     } catch (error) {
         console.error(error)
         return res.status(500).send(error);
+    }
+}
+
+export const deleteAtraction = async (req: Request, res:Response): Promise<Response> => {
+    try {
+        await Atraction.findByIdAndDelete(req.params.id);
+        return res.status(200).send(`Atraction deleted with ID: ${req.params.id}`);
+    } catch (error) {
+        console.error(error)
+        return res.status(500).send(error)
     }
 }
