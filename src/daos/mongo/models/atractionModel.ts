@@ -3,7 +3,7 @@ import mongoose, {Schema, Document} from "mongoose";
 export interface Iatraction extends Document {
     id: number;
     tickets: number;
-    cost: Float32Array;
+    cost: number[];
     name: string;
     time: number;
     atractionTypeId: number;
@@ -19,7 +19,7 @@ tickets: {
     required: true
 },
 cost: {
-    type: Float32Array,
+    type: [Number],
     required: true,
     unique: true
 },

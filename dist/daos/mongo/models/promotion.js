@@ -38,7 +38,7 @@ const PromotionSchema = new mongoose_1.Schema({
         required: true
     },
     costOrDiscount: {
-        type: Float32Array,
+        type: [Number],
         required: true
     },
     isDeleted: {

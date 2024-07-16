@@ -3,7 +3,7 @@ export interface IPromotion extends Document {
     id: number;
     promotionType:string;
     pricingStrategy: string;
-    costOrDiscount: Float32Array;
+    costOrDiscount: number[] | number;
     isDeleted: boolean;
 }
 const PromotionSchema = new Schema<IPromotion>({
@@ -20,7 +20,7 @@ const PromotionSchema = new Schema<IPromotion>({
         required: true
     },
     costOrDiscount:{
-        type: Float32Array,
+        type:[Number],
         required: true
     },
     isDeleted:{

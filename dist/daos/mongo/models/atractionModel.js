@@ -34,7 +34,7 @@ const AtractionSchema = new mongoose_1.Schema({
         required: true
     },
     cost: {
-        type: Float32Array,
+        type: [Number],
         required: true,
         unique: true
     },
