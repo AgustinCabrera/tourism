@@ -14,16 +14,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getAlgo = exports.deleteUser = exports.updateUser = exports.createUser = exports.getUserById = exports.getUsers = void 0;
 const userModel_1 = __importDefault(require("../daos/mongo/models/userModel"));
-const getUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const users = yield userModel_1.default.find();
-        return res.status(200).json(users);
-    }
-    catch (error) {
-        console.error(error);
-        return res.status(500).send(error);
-    }
-});
+function getUsers(req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const users = yield userModel_1.default.find();
+            return res.status(200).json(users);
+        }
+        catch (error) {
+            console.error(error);
+            return res.status(500).send(error);
+        }
+    });
+}
 exports.getUsers = getUsers;
 const getUserById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {

@@ -1,7 +1,7 @@
     import { Request, Response } from 'express';
     import User from '../daos/mongo/models/userModel'
 
-    export const getUsers = async (req: Request, res: Response): Promise<Response> => {
+    export async function getUsers(req: Request, res: Response): Promise<Response> {
     try {
         const users = await User.find();
         return res.status(200).json(users);
@@ -9,7 +9,7 @@
         console.error(error);
         return res.status(500).send(error);
     }
-    };
+}
 
     export const getUserById = async (req: Request, res: Response): Promise<Response> => {
     try {

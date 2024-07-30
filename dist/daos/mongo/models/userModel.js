@@ -32,5 +32,5 @@ const userSchema = new mongoose_1.Schema({
     preferred_attraction_type_id: { type: String, required: true },
     is_admin: { type: Boolean, required: true },
 });
-const User = mongoose_1.default.model('User', userSchema);
+const User = mongoose_1.default.model('users', userSchema);
 exports.default = User;
